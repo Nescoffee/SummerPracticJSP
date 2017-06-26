@@ -26,7 +26,7 @@ import model.Zakaz;
 @WebServlet("/ExecuteOperation")
 public class ExecuteOperation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       //привет
     /**
      * @see HttpServlet#HttpServlet()
      */
