@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Вибір таблиці</title>
+</head>
+<body>
+<center>
+		<form action="SelectTable" target="forTable" name="selectTable"
+			method="POST">
+			<b>Виберіть таблицю</b>
+			<table width="80">
+				<tr>
+					<td align="left"><input type="radio" name="tableName"
+						value="Room"> Room</td>
+				</tr>
+				<tr>
+					<td align="left"><input type="radio" name="tableName"
+						value="Visitor"> Visitor</td>
+				<tr>
+					<td align="left"><input type="radio" name="tableName"
+						value="Manager"> Manager</td>
+				</tr>
+				<tr>
+					<td align="left"><input type="radio" name="tableName"
+						value="Zakaz"> Order</td>
+				</tr>
+			</table>
+			<input type="submit" value="Завантажити">
+			<p></p>
+		</form>
+
+		<form action="SelectQuery" target="forTable" name="selectQuery"
+			method="POST">
+			<b>Вибір запиту до бази</b>
+			<select size="1" name="query">
+				<option value="neud">Кімнати
+				<option value="sumthing">Показати ще щось
+			</select>
+			<p>
+				<input type="submit" value="Виконати запит">
+			<p>
+		</form>
+</center>
+
+</body>
+</html>
