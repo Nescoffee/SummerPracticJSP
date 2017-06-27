@@ -71,7 +71,7 @@ public class Room implements Serializable,IModel {
 
 	@Override
 	public String[] getTableHeaders() {
-		return new String[]{"Id","CountPers","Price","RoomNumb","Type",};
+		return new String[]{"Id","CountPers","Price","RoomNumb","Type"};
 	}
 
 	@Override

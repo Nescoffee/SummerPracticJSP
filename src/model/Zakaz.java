@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="Zakaz.findAll", query="SELECT z FROM Zakaz z")
-public class Zakaz implements Serializable {
+public class Zakaz implements Serializable,IModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -76,6 +76,24 @@ public class Zakaz implements Serializable {
 
 	public void setRoom(Room room) {
 		this.room = room;
+	}
+
+	@Override
+	public String[] getTableHeaders() {
+		return new String[]{"Id","dateIn","dateOut","dateOut","Room","Visitor"};
+	}
+
+	@Override
+	public Object[] getTableRowData() {
+		String r = (room==null)? "null":String.valueOf(room.getRoomNumb());
+		String v = (visitor==null)? "null":visitor.getFiovis();
+		return new Object[]{id,r,v,dateIn};
+	}
+
+	@Override
+	public void updateWith(Object mask) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
