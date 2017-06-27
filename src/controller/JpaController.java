@@ -70,22 +70,13 @@ public class JpaController implements IController{
 
 	@Override
 	public void add(Object obj) {
-		Class clazz = obj.getClass();
-		if (exist((IModel) obj))
-			return;
-		EntityManagerFactory emf = 
-					Persistence.createEntityManagerFactory("MyJpaProject");
+		if(exist((IModel) obj)) return;
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyJpaProject");
 		EntityManager em = emf.createEntityManager();
-		try {
-			em.getTransaction().begin();
-			em.persist(obj);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
+		em.getTransaction().begin();
+		em.persist(obj);
+	em.getTransaction().commit();
+	
 }
 
 
