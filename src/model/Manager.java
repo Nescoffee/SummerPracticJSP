@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name="Manager.findAll", query="SELECT m FROM Manager m")
-public class Manager implements Serializable {
+public class Manager implements Serializable,IModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -50,6 +50,57 @@ public class Manager implements Serializable {
 
 	public void setZakaz(Zakaz zakaz) {
 		this.zakaz = zakaz;
+	}
+
+	@Override
+	public String[] getTableHeaders() {
+		return new String[]{"Id","FioManager","Zakaz"};
+	}
+
+	@Override
+	public Object[] getTableRowData() {
+		String z = (zakaz==null)? "null": String.valueOf(zakaz.getId());
+		return new Object[]{id,z,fioManager};
+	}
+
+	@Override
+	public void updateWith(Object mask) {
+		Manager obj = (Manager) mask;
+		fioManager = obj.getFioManager();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fioManager == null) ? 0 : fioManager.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((zakaz == null) ? 0 : zakaz.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Manager other = (Manager) obj;
+		if (fioManager == null) {
+			if (other.fioManager != null)
+				return false;
+		} else if (!fioManager.equals(other.fioManager))
+			return false;
+		if (id != other.id)
+			return false;
+		if (zakaz == null) {
+			if (other.zakaz != null)
+				return false;
+		} else if (!zakaz.equals(other.zakaz))
+			return false;
+		return true;
 	}
 
 }
