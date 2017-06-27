@@ -60,7 +60,7 @@ public class Manager implements Serializable,IModel {
 	@Override
 	public Object[] getTableRowData() {
 		String z = (zakaz==null)? "null": String.valueOf(zakaz.getId());
-		return new Object[]{id,z,fioManager};
+		return new Object[]{id,fioManager,z};
 	}
 
 	@Override
