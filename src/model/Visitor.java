@@ -88,4 +88,51 @@ public class Visitor implements Serializable,IModel {
 		
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((fiovis == null) ? 0 : fiovis.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((passport == null) ? 0 : passport.hashCode());
+		result = prime * result + ((phonenumb == null) ? 0 : phonenumb.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Visitor other = (Visitor) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (fiovis == null) {
+			if (other.fiovis != null)
+				return false;
+		} else if (!fiovis.equals(other.fiovis))
+			return false;
+		if (id != other.id)
+			return false;
+		if (passport == null) {
+			if (other.passport != null)
+				return false;
+		} else if (!passport.equals(other.passport))
+			return false;
+		if (phonenumb == null) {
+			if (other.phonenumb != null)
+				return false;
+		} else if (!phonenumb.equals(other.phonenumb))
+			return false;
+		return true;
+	}
+	
+
 }
