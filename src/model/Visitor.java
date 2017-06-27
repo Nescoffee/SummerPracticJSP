@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name="Visitor.findAll", query="SELECT v FROM Visitor v")
-public class Visitor implements Serializable {
+public class Visitor implements Serializable,IModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -65,6 +65,27 @@ public class Visitor implements Serializable {
 
 	public void setPhonenumb(String phonenumb) {
 		this.phonenumb = phonenumb;
+	}
+
+	@Override
+	public String[] getTableHeaders() {
+		return new String[]{"Id","FIO","PASSPORT","PhoneNumb","email",};
+	}
+
+	@Override
+	public Object[] getTableRowData() {
+		return new Object[]{id,fiovis, passport,phonenumb,email};
+	}
+
+	@Override
+	public void updateWith(Object mask) {
+		Visitor obj = (Visitor) mask;
+		fiovis = obj.getFiovis();
+		passport = obj.getPassport();
+		phonenumb = obj.getPhonenumb();
+		email = obj.getEmail();
+		
+		
 	}
 
 }
