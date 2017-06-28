@@ -128,4 +128,10 @@ public class Room implements Serializable,IModel {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", countPers=" + countPers + ", price=" + price + ", roomNumb=" + roomNumb + ", type="
+				+ type + "]";
+	}
+
 }
