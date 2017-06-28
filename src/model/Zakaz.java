@@ -99,4 +99,11 @@ public class Zakaz implements Serializable,IModel {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Zakaz [id=" + id + ", dateIn=" + dateIn + ", dateOut=" + dateOut + ", visitor=" + visitor + ", room="
+				+ room + "]";
+	}
+	
+
 }
