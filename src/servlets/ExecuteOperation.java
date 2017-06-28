@@ -82,24 +82,22 @@ public class ExecuteOperation extends HttpServlet {
 			
 		}
     		
-//    	 else if (obj instanceof Manager) {
-//  			String fioManager = request.getParameter("fioManager");
-// 			((Manager) obj).setFioManager(fioManager);
-// 			
-// 			if(operation.equals("add")){
-// 				Enumeration <String> n = request.getParameterNames();
-// 				while (n.hasMoreElements()) {
-//						String string = (String) n.nextElement();
-//						System.out.println(string);
-//					}
-// 				int roomId = Integer.parseInt(request.getParameter("roomId"));
-// 				Room roo = (Room)(findById(roomId,controller,"Room"));
-// 				((Admin) obj).setRoom(roo);
-// 				int visId = Integer.parseInt(request.getParameter("visId"));
-// 				Visitor visi = (Visitor)(findById(visId,controller,"Visitor"));
-// 				((Admin) obj).setVisitor(visi);
-// 			} 
-// 		}
+    	 else if (obj instanceof Manager) {
+  			String fioManager = request.getParameter("fioManager");
+ 			((Manager) obj).setFioManager(fioManager);
+ 			
+ 			
+ 				Enumeration <String> n = request.getParameterNames();
+ 				while (n.hasMoreElements()) {
+						String string = (String) n.nextElement();
+						System.out.println(string);
+			
+ 				int id_zakaz = Integer.parseInt(request.getParameter("id_zakaz"));
+ 				Zakaz roo = (Zakaz)(findById(id_zakaz,controller,"Zakaz"));
+ 				((Manager) obj).setZakaz(roo);
+ 				
+ 			} 
+ 		}
     		 
     		
     		System.out.println("doshlo");
