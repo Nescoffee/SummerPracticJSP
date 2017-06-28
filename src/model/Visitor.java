@@ -136,6 +136,12 @@ public class Visitor implements Serializable,IModel {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Visitor [id=" + id + ", email=" + email + ", fiovis=" + fiovis + ", passport=" + passport
+				+ ", phonenumb=" + phonenumb + "]";
+	}
 	
 
 }
