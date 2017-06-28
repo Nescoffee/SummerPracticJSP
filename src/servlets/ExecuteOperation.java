@@ -101,7 +101,30 @@ public class ExecuteOperation extends HttpServlet {
  				
  			} 
  		}
-    		 
+    	 else if (obj instanceof Zakaz) {
+ 			Date dateIn = Date.valueOf(request.getParameter("dateIn"));
+ 			((Zakaz) obj).setDateIn(dateIn);
+ 			Date dateOut = Date.valueOf(request.getParameter("dateOut"));
+ 			((Zakaz) obj).setDateOut(dateOut);
+ 			System.out.println("zakaz add");
+ 
+ 			
+ 			Enumeration <String> n = request.getParameterNames();
+				while (n.hasMoreElements()) {
+					String string = (String) n.nextElement();
+					System.out.println(string);
+		
+				int id_zakaz = Integer.parseInt(request.getParameter("roomId"));
+				Room roo = (Room)(findById(id_zakaz,controller,"Room"));
+				((Zakaz) obj).setRoom(roo);
+				
+				int id_vis = Integer.parseInt(request.getParameter("visId"));
+				Visitor vis = (Visitor)(findById(id_vis,controller,"Visitor"));
+				((Zakaz) obj).setVisitor(vis);
+				
+			} 
+    	 }
+    		
     		
     		System.out.println("doshlo");
 			controller.add(obj);
