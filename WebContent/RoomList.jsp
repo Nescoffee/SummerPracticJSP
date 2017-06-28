@@ -10,7 +10,7 @@
 </head>
 <body>
 	<center>
-		Студенти <select size="5" name="roomId">
+		Кімнати <select size="5" name="roomId">
 			<%
 			JpaController controller = 
 (JpaController) session.getAttribute("controller");
