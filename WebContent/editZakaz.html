@@ -6,11 +6,22 @@
 </head>
 <body>
 	<h3> Редагування </h3>
-	<iframe name="roomList" src="RoomList.jsp" width="120" height="150"
-			frameborder="0"> </iframe>
-		<iframe name="inputZakaz" src="inputZakaz.html" width="330" height="150"
-			frameborder="0"> </iframe>
-		<iframe name="visitorList" src="VisitorList.jsp" width="140" height="150"
-			frameborder="0"> </iframe>
+	<form action="ExecuteOperation" target="forTable" method="POST">
+	<p>
+			Введіть Id Заказу <input type="text" name="id">
+		</p>
+		<p>
+			id кімнати <input type="text" name="roomId"> <br>та
+			id відвідувача <input type="text" name="visId">
+		</p>
+		<p>
+			дата прибуття <input type="text" name="dateIn">
+		</p>
+		<p>
+			дату відбуття <input type="text" name="dateOut">
+		</p>
+		<p>
+			<input type="submit" value="Едит"></p>
+	</form>
 </body>
 </html>

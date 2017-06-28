@@ -54,7 +54,7 @@ public class ExecuteOperation extends HttpServlet {
     		controller.delete(id, tableName);
     	} 
     
-    	else if (operation.equals("add")) {
+    	else  {
     		IModel obj = null;
     		try {
     			obj = (IModel) Class.forName(className).newInstance();
@@ -78,7 +78,7 @@ public class ExecuteOperation extends HttpServlet {
 			((Visitor) obj).setFiovis(fiovis);
 			String passport = request.getParameter("passport");
 			((Visitor) obj).setPassport(passport);
-			String phonenumb = request.getParameter("phoneNumb");
+			String phonenumb = request.getParameter("phonenumb");
 			((Visitor) obj).setPhonenumb(phonenumb);
 			String email = request.getParameter("email");
 			((Visitor) obj).setEmail(email);
@@ -94,12 +94,12 @@ public class ExecuteOperation extends HttpServlet {
  				while (n.hasMoreElements()) {
 						String string = (String) n.nextElement();
 						System.out.println(string);
-			
+ 				}
  				int id_zakaz = Integer.parseInt(request.getParameter("id_zakaz"));
  				Zakaz roo = (Zakaz)(findById(id_zakaz,controller,"Zakaz"));
  				((Manager) obj).setZakaz(roo);
  				
- 			} 
+ 			
  		}
     	 else if (obj instanceof Zakaz) {
  			Date dateIn = Date.valueOf(request.getParameter("dateIn"));
@@ -113,7 +113,7 @@ public class ExecuteOperation extends HttpServlet {
 				while (n.hasMoreElements()) {
 					String string = (String) n.nextElement();
 					System.out.println(string);
-		
+				}
 				int id_zakaz = Integer.parseInt(request.getParameter("roomId"));
 				Room roo = (Room)(findById(id_zakaz,controller,"Room"));
 				((Zakaz) obj).setRoom(roo);
@@ -122,74 +122,25 @@ public class ExecuteOperation extends HttpServlet {
 				Visitor vis = (Visitor)(findById(id_vis,controller,"Visitor"));
 				((Zakaz) obj).setVisitor(vis);
 				
-			} 
+			
     	 }
     		
     		
-    		System.out.println("doshlo");
-			controller.add(obj);
+    		switch (operation) {
+    		case "edit":
+    			int id = Integer.parseInt(request.getParameter("id"));
+    			controller.edit(id, obj);
+    			break;
+    		case "add":
+    			System.out.println("doshlo");
+    			controller.add(obj);
+    			
+    		}
+    	
     		
+			
     		
     	} 
-    	
-//    	else {
-//    		
-//    		if (obj instanceof Room) {
-//    			int roomNumb = Integer.parseInt(request.getParameter("roomNumb"));
-//    			((Room) obj).setRoomNumb(roomNumb);
-//    			int price = Integer.parseInt(request.getParameter("price"));
-//    			((Room) obj).setPrice(price);
-//    			String type = request.getParameter("type");
-//    			((Room) obj).setType(type);
-//    			int countPers = Integer.parseInt(request.getParameter("countPers"));
-//    			((Room) obj).setCountPers(countPers);
-//    			
-//    		} else if (obj instanceof Visitor) {
-//    			String fiovis = request.getParameter("fiovis");
-//    			((Visitor) obj).setFiovis(fiovis);
-//    			String passport = request.getParameter("passport");
-//    			((Visitor) obj).setPassport(passport);
-//    			String phonenumb = request.getParameter("phoneNumb");
-//    			((Visitor) obj).setPhonenumb(phonenumb);
-//    			String email = request.getParameter("email");
-//    			((Visitor) obj).setEmail(email);
-//    			
-//    		} else if (obj instanceof Zakaz) {
-//    			Date dateIn = Date.valueOf(request.getParameter("dateIn"));
-//    			((Zakaz) obj).setDateIn(dateIn);
-//    			Date dateOut = Date.valueOf(request.getParameter("dateOut"));
-//    			((Zakaz) obj).setDateOut(dateOut);
-// // судя по всему, тут нужно тоже сделать if(operation.equals("add")), потому что есть связи
-//    			
-//    		} else if (obj instanceof Manager) {
-//     			String fioManager = request.getParameter("fioManager");
-//    			((Manager) obj).setFioManager(fioManager);
-//    			
-//    			if(operation.equals("add")){
-////    				Enumeration <String> n = request.getParameterNames();
-////    				while (n.hasMoreElements()) {
-////						String string = (String) n.nextElement();
-////						System.out.println(string);
-////					}
-////    				int roomId = Integer.parseInt(request.getParameter("roomId"));
-////    				Room roo = (Room)(findById(roomId,controller,"Room"));
-////    				((Admin) obj).setRoom(roo);
-////    				int visId = Integer.parseInt(request.getParameter("visId"));
-////    				Visitor visi = (Visitor)(findById(visId,controller,"Visitor"));
-////    				((Admin) obj).setVisitor(visi);
-////    			} не знаю, как тут правильно сделать
-//    		}
-//    		switch (operation) {
-//    		case "edit":
-//    			int id = Integer.parseInt(request.getParameter("id"));
-//    			controller.edit(id, obj);
-//    			break;
-//    		case "add":
-//    			System.out.println("doshlo");
-//    			controller.add(obj);
-//    			
-//    		}
-//    	}
     	
     	TableModel tableModel = controller.getModel(tableName);
     	session.setAttribute("tableModel", tableModel);
