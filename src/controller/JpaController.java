@@ -122,9 +122,10 @@ public class JpaController implements IController{
 
 	@Override
 	public TableModel doQuery1() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyJpaProject");
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("select r from Room r");
-		q.setParameter(1, 60);
+		Query q = em.createQuery("select r from Room r where r.roomNumb = ?1");
+		q.setParameter(1, 101);
 		List<Room> list = q.getResultList();
 		String[][] arr = new String[list.size()][4];
 		int i = 0;
@@ -135,7 +136,7 @@ public class JpaController implements IController{
 			arr[i++][3] = String.valueOf(r.getCountPers());
 		}
 		DefaultTableModel model = new DefaultTableModel(arr,
-	 new String[] { "number", "price", "type", "count_of_pers" });
+	 new String[] { "RoomNumber", "price", "type", "count_of_pers" });
 		return model;
 	}
 
