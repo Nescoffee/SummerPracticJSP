@@ -83,14 +83,14 @@ public class Zakaz implements Serializable,IModel {
 
 	@Override
 	public String[] getTableHeaders() {
-		return new String[]{"Id","dateIn","dateOut","dateOut","Room","Visitor"};
+		return new String[]{"Id","Number of room","Visitor","date come","date get out"};
 	}
 
 	@Override
 	public Object[] getTableRowData() {
 		String r = (room==null)? "null":String.valueOf(room.getRoomNumb());
 		String v = (visitor==null)? "null":visitor.getFiovis();
-		return new Object[]{id,r,v,dateIn};
+		return new Object[]{id,r,v,dateIn,dateOut};
 	}
 
 	@Override
