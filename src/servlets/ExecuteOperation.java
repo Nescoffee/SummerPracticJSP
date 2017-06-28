@@ -46,6 +46,9 @@ public class ExecuteOperation extends HttpServlet {
     	JpaController controller = (JpaController) session.getAttribute("controller");
     	String className = "model." + tableName;
     	String operation = (String) session.getAttribute("operation");
+    	
+    	
+    	
     	if (operation.equals("delete")) {
     		int id = Integer.parseInt(request.getParameter("id"));
     		controller.delete(id, tableName);
@@ -86,7 +89,7 @@ public class ExecuteOperation extends HttpServlet {
   			String fioManager = request.getParameter("fioManager");
  			((Manager) obj).setFioManager(fioManager);
  			
- 			
+ 			System.out.println("manager add");
  				Enumeration <String> n = request.getParameterNames();
  				while (n.hasMoreElements()) {
 						String string = (String) n.nextElement();
