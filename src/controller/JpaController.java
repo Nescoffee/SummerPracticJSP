@@ -29,13 +29,6 @@ public class JpaController implements IController{
 		return list;
 	}
 
-	
-	
-	
-
-	
-	
-
 	@Override
 	public void createDB() {
 		// TODO Auto-generated method stub
@@ -71,7 +64,6 @@ public class JpaController implements IController{
 	@Override
 	public void add(Object obj) {
 		if(exist((IModel) obj)) return;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyJpaProject");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(obj);
@@ -122,7 +114,7 @@ public class JpaController implements IController{
 
 	@Override
 	public TableModel doQuery1() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyJpaProject");
+
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("select r from Room r where r.roomNumb = ?1");
 		q.setParameter(1, 101);
